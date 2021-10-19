@@ -1,8 +1,14 @@
+.button {
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
 .button.pressed {
   fill: white;
+  transform: translateY(2%);
 }
 
 .button:not(.pressed) {
-  transition: fill 150ms ease-out;
+  transition: fill 150ms ease-out, transform 150ms ease-in-out;
+  transform: scale(1);
   fill: transparent;
 }
