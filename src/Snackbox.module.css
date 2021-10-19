@@ -1,0 +1,8 @@
+.button.pressed {
+  fill: white;
+}
+
+.button:not(.pressed) {
+  transition: fill 150ms ease-out;
+  fill: transparent;
+}
