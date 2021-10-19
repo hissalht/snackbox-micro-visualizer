@@ -32,7 +32,6 @@ function App() {
         const gamepad = navigator.getGamepads()[gamepadIndex]!;
         const buttons = gamepad.buttons;
         const newButtonState: ButtonState = {
-          ...buttonState,
           a: buttons[0].pressed,
           b: buttons[1].pressed,
           x: buttons[2].pressed,
@@ -68,8 +67,6 @@ function App() {
       }
       window.removeEventListener("gamepadconnected", onGamepadconnected);
     };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
