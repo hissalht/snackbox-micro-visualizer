@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import Snackbox from "./Snackbox";
 import type { ButtonState } from "./Snackbox";
@@ -21,6 +21,13 @@ const DEFAULT_BUTTON_STATE: ButtonState = {
 function App() {
   const [buttonState, setButtonState] =
     useState<ButtonState>(DEFAULT_BUTTON_STATE);
+
+  const { buttonColor, caseColor } = useMemo(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const buttonColor = searchParams.get("buttonColor") || "black";
+    const caseColor = searchParams.get("caseColor") || "black";
+    return { buttonColor, caseColor };
+  }, []);
 
   useEffect(() => {
     let gamepadIndex: number | null;
@@ -70,9 +77,11 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Snackbox buttonState={buttonState} />
-    </>
+    <Snackbox
+      buttonState={buttonState}
+      buttonColor={buttonColor}
+      caseColor={caseColor}
+    />
   );
 }
 

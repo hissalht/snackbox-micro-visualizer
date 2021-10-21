@@ -20,23 +20,34 @@ export interface ButtonState {
 interface SnackboxProps {
   className?: string;
   buttonState: ButtonState;
+  buttonColor?: string;
+  caseColor?: string;
 }
 
-export default function Snackbox({ className, buttonState }: SnackboxProps) {
+export default function Snackbox({
+  className,
+  buttonState,
+  buttonColor = "black",
+  caseColor = "black",
+}: SnackboxProps) {
   return (
     <svg
       className={clsx(className)}
       viewBox="0 0 390 196"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{
+        "--snackbox-button-color": buttonColor,
+        "--snackbox-case-color": caseColor,
+      }}
     >
       <rect
+        className={styles.case}
         x="1"
         y="1"
         width="388"
         height="194"
         rx="19"
-        fill="black"
         stroke="white"
         strokeWidth="2"
       />
