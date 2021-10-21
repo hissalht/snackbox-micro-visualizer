@@ -2,9 +2,11 @@
 
 This is a simple input overlay for [Junkfood Arcades Snackbox Micro](https://junkfoodarcades.com/collections/snack-box-micro).
 
+You can try it directly here : [snackbox-micro-visualizer.netlify.app](https://snackbox-micro-visualizer.netlify.app)
+
 ![Example of using Snackbox Micro visualizer](./.github/readme-images/preview.gif)
 
-## How to use
+## How to use with OBS
 
 In OBS, add a _Browser_ source and use this URL : `https://snackbox-micro-visualizer.netlify.app/`. That's it !
 
