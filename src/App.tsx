@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Snackbox from "./Snackbox";
 import type { ButtonState } from "./Snackbox";
+import Settings from "./Settings";
+import type { ColorSettings } from "./Settings";
 
 const DEFAULT_BUTTON_STATE: ButtonState = {
   left: false,
@@ -18,16 +20,33 @@ const DEFAULT_BUTTON_STATE: ButtonState = {
   rt: false,
 };
 
+const DEFAULT_COLOR_SETTINGS: ColorSettings = {
+  buttonColor: "black",
+  caseColor: "black",
+};
+
 function App() {
+  const [settings, setSettings] = useState<ColorSettings>(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const buttonColor =
+      searchParams.get("buttonColor") || DEFAULT_COLOR_SETTINGS.buttonColor;
+    const caseColor =
+      searchParams.get("caseColor") || DEFAULT_COLOR_SETTINGS.caseColor;
+    return { buttonColor, caseColor };
+  });
+
   const [buttonState, setButtonState] =
     useState<ButtonState>(DEFAULT_BUTTON_STATE);
 
-  const { buttonColor, caseColor } = useMemo(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    const buttonColor = searchParams.get("buttonColor") || "black";
-    const caseColor = searchParams.get("caseColor") || "black";
-    return { buttonColor, caseColor };
-  }, []);
+  const handleSettingsChange = (value: ColorSettings) => {
+    setSettings(value);
+
+    const searchParams = new URLSearchParams();
+    searchParams.set("buttonColor", value.buttonColor);
+    searchParams.set("caseColor", value.caseColor);
+    // eslint-disable-next-line no-restricted-globals
+    history.replaceState(null, "", `/?${searchParams.toString()}`);
+  };
 
   useEffect(() => {
     let gamepadIndex: number | null;
@@ -77,11 +96,14 @@ function App() {
   }, []);
 
   return (
-    <Snackbox
-      buttonState={buttonState}
-      buttonColor={buttonColor}
-      caseColor={caseColor}
-    />
+    <>
+      <Settings settings={settings} onChange={handleSettingsChange} />
+      <Snackbox
+        buttonState={buttonState}
+        buttonColor={settings.buttonColor}
+        caseColor={settings.caseColor}
+      />
+    </>
   );
 }
 

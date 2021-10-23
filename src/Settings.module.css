@@ -1,0 +1,22 @@
+.settings {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid black;
+
+  opacity: 0;
+}
+
+.settings:hover {
+  opacity: 1;
+}
+
+.field {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  align-items: center;
+}
