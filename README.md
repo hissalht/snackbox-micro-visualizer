@@ -6,11 +6,11 @@ You can try it directly here : [snackbox-micro-visualizer.netlify.app](https://s
 
 ![Example of using Snackbox Micro visualizer](./.github/readme-images/preview.gif)
 
-## How to use with OBS
+## How to use with streaming softwares
 
-In OBS, add a _Browser_ source and use this URL : `https://snackbox-micro-visualizer.netlify.app/`. That's it !
+In your streaming software, add a _Browser_ source and use this URL : `https://snackbox-micro-visualizer.netlify.app/`. That's it !
 
-You can change the opacity of the overlay by adding a _Color adjustment_.
+In OBS, you can change the opacity of the overlay by adding a _Color adjustment_.
 
 ## How to customize colors
 
