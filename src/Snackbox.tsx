@@ -50,139 +50,137 @@ export default function Snackbox({
         width="388"
         height="194"
         rx="19"
-        stroke="white"
-        strokeWidth="2"
       />
 
       {/* X */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.x })}
-        cx="205"
-        cy="62"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.x })}>
+        <circle cx="205" cy="62" r="19" />
+        <text
+          x="205"
+          y="62"
+          fill="#66ceff"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
+          K
+        </text>
+      </g>
 
       {/* Y */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.y })}
-        cx="246"
-        cy="38"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.y })}>
+        <circle cx="246" cy="38" r="19" />
+        <text
+          x="246"
+          y="38"
+          fill="#36e79d"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
+          S
+        </text>
+      </g>
 
       {/* RB */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.rb })}
-        cx="292"
-        cy="38"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.rb })}>
+        <circle cx="292" cy="38" r="19" />
+        <text
+          x="292"
+          y="38"
+          fill="#f43030"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
+          HS
+        </text>
+      </g>
 
       {/* RT */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.rt })}
-        cx="338"
-        cy="53"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.rt })}>
+        <circle cx="338" cy="53" r="19" />
+      </g>
 
       {/* A */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.a })}
-        cx="202"
-        cy="109"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.a })}>
+        <circle cx="202" cy="109" r="19" />
+        <text
+          x="202"
+          y="109"
+          fill="#ff8eff"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
+          P
+        </text>
+      </g>
 
       {/* B */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.b })}
-        cx="246"
-        cy="86"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.b })}>
+        <circle cx="246" cy="86" r="19" />
+
+        <svg width="30" height="30" x="231" y="71" viewBox="0 0 24 24">
+          <path
+            fill="white"
+            d="M13.5,5.5C14.59,5.5 15.5,4.58 15.5,3.5C15.5,2.38 14.59,1.5 13.5,1.5C12.39,1.5 11.5,2.38 11.5,3.5C11.5,4.58 12.39,5.5 13.5,5.5M9.89,19.38L10.89,15L13,17V23H15V15.5L12.89,13.5L13.5,10.5C14.79,12 16.79,13 19,13V11C17.09,11 15.5,10 14.69,8.58L13.69,7C13.29,6.38 12.69,6 12,6C11.69,6 11.5,6.08 11.19,6.08L6,8.28V13H8V9.58L9.79,8.88L8.19,17L3.29,16L2.89,18L9.89,19.38Z"
+          />
+        </svg>
+      </g>
 
       {/* LB */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.lb })}
-        cx="292"
-        cy="86"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.lb })}>
+        <circle cx="292" cy="86" r="19" />
+        <text
+          x="292"
+          y="86"
+          fill="#f89630"
+          textAnchor="middle"
+          dominantBaseline="central"
+        >
+          D
+        </text>
+      </g>
 
       {/* LT */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.lt })}
-        cx="338"
-        cy="100"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      <g className={clsx(styles.button, { [styles.pressed]: buttonState.lt })}>
+        <circle cx="338" cy="100" r="19" />
+      </g>
 
       {directionDisplay === "buttons" && (
         <>
-          <circle
+          <g
             // Up
             className={clsx(styles.button, {
               [styles.pressed]: buttonState.up,
             })}
-            cx="185"
-            cy="164"
-            r="24"
-            stroke="white"
-            strokeWidth="2"
-          />
+          >
+            <circle cx="185" cy="164" r="24" />
+          </g>
 
-          <circle
+          <g
             // Right
             className={clsx(styles.button, {
               [styles.pressed]: buttonState.right,
             })}
-            cx="163"
-            cy="83"
-            r="19"
-            stroke="white"
-            strokeWidth="2"
-          />
+          >
+            <circle cx="163" cy="83" r="19" />
+          </g>
 
-          <circle
+          <g
             // Down
             className={clsx(styles.button, {
               [styles.pressed]: buttonState.down,
             })}
-            cx="122"
-            cy="59"
-            r="19"
-            stroke="white"
-            strokeWidth="2"
-          />
+          >
+            <circle cx="122" cy="59" r="19" />
+          </g>
 
-          <circle
+          <g
             // Left
             className={clsx(styles.button, {
               [styles.pressed]: buttonState.left,
             })}
-            cx="75"
-            cy="59"
-            r="19"
-            stroke="white"
-            strokeWidth="2"
-          />
+          >
+            <circle cx="75" cy="59" r="19" />
+          </g>
         </>
       )}
 
