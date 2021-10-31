@@ -8,23 +8,43 @@
 
 .case {
   fill: var(--snackbox-case-color, black);
+  stroke: white;
+  stroke-width: 2;
 }
 
+/* BUTTONS */
+
 .button {
-  stroke: rgba(255, 255, 255, 0.8);
   transform-box: fill-box;
   transform-origin: center;
 }
 
 .button.pressed {
-  fill: var(--snackbox-button-color-pressed, white);
   transform: translateY(6%) scale(0.95);
 }
 
 .button:not(.pressed) {
   transition: fill 150ms ease-out, transform 150ms ease-in-out;
   transform: translateY(0) scale(1);
+}
+
+.button circle {
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 2;
+}
+
+.button.pressed circle {
+  fill: var(--snackbox-button-color-pressed, white);
+}
+
+.button:not(.pressed) circle {
   fill: var(--snackbox-button-color, transparent);
+}
+
+.button text {
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .stickBall {
