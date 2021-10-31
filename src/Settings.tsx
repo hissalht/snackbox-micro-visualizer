@@ -4,6 +4,7 @@ import styles from "./Settings.module.css";
 export interface ColorSettings {
   buttonColor: string;
   caseColor: string;
+  directionDisplay: "buttons" | "stick";
 }
 
 interface SettingsProps {
@@ -41,6 +42,35 @@ export default function Settings({ settings, onChange }: SettingsProps) {
           onChange={handleChange("caseColor")}
         />
       </div>
+
+      <fieldset>
+        <legend>Direction display</legend>
+        <div className={styles.field}>
+          <div>
+            <input
+              id="direction-display-buttons"
+              type="radio"
+              name="direction-display"
+              value="buttons"
+              onChange={handleChange("directionDisplay")}
+              checked={settings.directionDisplay === "buttons"}
+            />
+            <label htmlFor="direction-display-buttons">Buttons</label>
+          </div>
+
+          <div>
+            <input
+              id="direction-display-stick"
+              type="radio"
+              name="direction-display"
+              value="stick"
+              onChange={handleChange("directionDisplay")}
+              checked={settings.directionDisplay === "stick"}
+            />
+            <label htmlFor="direction-display-stick">Stick</label>
+          </div>
+        </div>
+      </fieldset>
     </div>
   );
 }

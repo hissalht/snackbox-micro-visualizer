@@ -20,19 +20,32 @@ const DEFAULT_BUTTON_STATE: ButtonState = {
   rt: false,
 };
 
-const DEFAULT_COLOR_SETTINGS: ColorSettings = {
+const DEFAULT_SETTINGS: ColorSettings = {
   buttonColor: "black",
   caseColor: "black",
+  directionDisplay: "buttons",
 };
 
 function App() {
   const [settings, setSettings] = useState<ColorSettings>(() => {
     const searchParams = new URLSearchParams(window.location.search);
+
     const buttonColor =
-      searchParams.get("buttonColor") || DEFAULT_COLOR_SETTINGS.buttonColor;
+      searchParams.get("buttonColor") || DEFAULT_SETTINGS.buttonColor;
+
     const caseColor =
-      searchParams.get("caseColor") || DEFAULT_COLOR_SETTINGS.caseColor;
-    return { buttonColor, caseColor };
+      searchParams.get("caseColor") || DEFAULT_SETTINGS.caseColor;
+
+    let directionDisplay = searchParams.get("directionDisplay");
+    if (!directionDisplay || !["buttons", "stick"].includes(directionDisplay)) {
+      directionDisplay = DEFAULT_SETTINGS.directionDisplay;
+    }
+
+    return {
+      buttonColor,
+      caseColor,
+      directionDisplay: directionDisplay as "buttons" | "stick",
+    };
   });
 
   const [buttonState, setButtonState] =
@@ -44,6 +57,7 @@ function App() {
     const searchParams = new URLSearchParams();
     searchParams.set("buttonColor", value.buttonColor);
     searchParams.set("caseColor", value.caseColor);
+    searchParams.set("directionDisplay", value.directionDisplay);
     // eslint-disable-next-line no-restricted-globals
     history.replaceState(null, "", `/?${searchParams.toString()}`);
   };
@@ -102,6 +116,7 @@ function App() {
         buttonState={buttonState}
         buttonColor={settings.buttonColor}
         caseColor={settings.caseColor}
+        directionDisplay={settings.directionDisplay}
       />
     </>
   );

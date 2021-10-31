@@ -26,3 +26,33 @@
   transform: translateY(0) scale(1);
   fill: var(--snackbox-button-color, transparent);
 }
+
+.stickBall {
+  --stickball-offset-size: 45%;
+  --stickball-x-offset: 0;
+  --stickball-y-offset: 0;
+
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translateX(
+      calc(var(--stickball-offset-size) * var(--stickball-x-offset))
+    )
+    translateY(calc(var(--stickball-offset-size) * var(--stickball-y-offset)));
+  transition: transform 30ms ease-in;
+}
+
+.stickBall.left {
+  --stickball-x-offset: -1;
+}
+
+.stickBall.right {
+  --stickball-x-offset: 1;
+}
+
+.stickBall.up {
+  --stickball-y-offset: -1;
+}
+
+.stickBall.down {
+  --stickball-y-offset: 1;
+}

@@ -22,6 +22,7 @@ interface SnackboxProps {
   buttonState: ButtonState;
   buttonColor?: string;
   caseColor?: string;
+  directionDisplay?: "buttons" | "stick";
 }
 
 export default function Snackbox({
@@ -29,6 +30,7 @@ export default function Snackbox({
   buttonState,
   buttonColor = "black",
   caseColor = "black",
+  directionDisplay = "buttons",
 }: SnackboxProps) {
   return (
     <svg
@@ -48,16 +50,6 @@ export default function Snackbox({
         width="388"
         height="194"
         rx="19"
-        stroke="white"
-        strokeWidth="2"
-      />
-
-      {/* Up */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.up })}
-        cx="185"
-        cy="164"
-        r="24"
         stroke="white"
         strokeWidth="2"
       />
@@ -142,35 +134,78 @@ export default function Snackbox({
         strokeWidth="2"
       />
 
-      {/* Right */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.right })}
-        cx="163"
-        cy="83"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      {directionDisplay === "buttons" && (
+        <>
+          <circle
+            // Up
+            className={clsx(styles.button, {
+              [styles.pressed]: buttonState.up,
+            })}
+            cx="185"
+            cy="164"
+            r="24"
+            stroke="white"
+            strokeWidth="2"
+          />
 
-      {/* Down */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.down })}
-        cx="122"
-        cy="59"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+          <circle
+            // Right
+            className={clsx(styles.button, {
+              [styles.pressed]: buttonState.right,
+            })}
+            cx="163"
+            cy="83"
+            r="19"
+            stroke="white"
+            strokeWidth="2"
+          />
 
-      {/* Left */}
-      <circle
-        className={clsx(styles.button, { [styles.pressed]: buttonState.left })}
-        cx="75"
-        cy="59"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+          <circle
+            // Down
+            className={clsx(styles.button, {
+              [styles.pressed]: buttonState.down,
+            })}
+            cx="122"
+            cy="59"
+            r="19"
+            stroke="white"
+            strokeWidth="2"
+          />
+
+          <circle
+            // Left
+            className={clsx(styles.button, {
+              [styles.pressed]: buttonState.left,
+            })}
+            cx="75"
+            cy="59"
+            r="19"
+            stroke="white"
+            strokeWidth="2"
+          />
+        </>
+      )}
+
+      {directionDisplay === "stick" && (
+        <>
+          {/* Stick hole */}
+          <circle cx="103" cy="91" r="10.4482" fill="#393939" />
+
+          {/* Stick ball */}
+          <circle
+            className={clsx(styles.stickBall, {
+              [styles.left]: buttonState.left,
+              [styles.right]: buttonState.right,
+              [styles.down]: buttonState.down,
+              [styles.up]: buttonState.up,
+            })}
+            r="18"
+            cx="103"
+            cy="91"
+            fill="white"
+          />
+        </>
+      )}
     </svg>
   );
 }
