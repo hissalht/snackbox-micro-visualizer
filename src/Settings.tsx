@@ -4,7 +4,7 @@ import styles from "./Settings.module.css";
 export interface ColorSettings {
   buttonColor: string;
   caseColor: string;
-  directionDisplay: "buttons" | "stick";
+  layout: "buttons" | "stick" | "tsract";
 }
 
 interface SettingsProps {
@@ -52,8 +52,8 @@ export default function Settings({ settings, onChange }: SettingsProps) {
               type="radio"
               name="direction-display"
               value="buttons"
-              onChange={handleChange("directionDisplay")}
-              checked={settings.directionDisplay === "buttons"}
+              onChange={handleChange("layout")}
+              checked={settings.layout === "buttons"}
             />
             <label htmlFor="direction-display-buttons">Buttons</label>
           </div>
@@ -64,10 +64,22 @@ export default function Settings({ settings, onChange }: SettingsProps) {
               type="radio"
               name="direction-display"
               value="stick"
-              onChange={handleChange("directionDisplay")}
-              checked={settings.directionDisplay === "stick"}
+              onChange={handleChange("layout")}
+              checked={settings.layout === "stick"}
             />
             <label htmlFor="direction-display-stick">Stick</label>
+          </div>
+
+          <div>
+            <input
+              id="direction-display-tsract"
+              type="radio"
+              name="direction-display"
+              value="tsract"
+              onChange={handleChange("layout")}
+              checked={settings.layout === "tsract"}
+            />
+            <label htmlFor="direction-display-stick">TSR:ACT</label>
           </div>
         </div>
       </fieldset>

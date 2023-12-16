@@ -24,7 +24,7 @@ interface SnackboxProps {
   buttonState: ButtonState;
   buttonColor?: string;
   caseColor?: string;
-  directionDisplay?: "buttons" | "stick";
+  layout?: "buttons" | "stick" | "tsract";
 }
 
 export default function Snackbox({
@@ -32,7 +32,7 @@ export default function Snackbox({
   buttonState,
   buttonColor = "black",
   caseColor = "black",
-  directionDisplay = "buttons",
+  layout = "buttons",
 }: SnackboxProps) {
   return (
     <svg
@@ -136,32 +136,35 @@ export default function Snackbox({
         strokeWidth="2"
       />
 
-      {/* LS */}
-      <circle
-        // Left
-        className={clsx(styles.button, {
-          [styles.pressed]: buttonState.ls,
-        })}
-        cx="28"
-        cy="59"
-        r="19"
-        stroke="white"
-        strokeWidth="2"
-      />
+      {layout === "tsract" && (
+        <>
+          {/* Left stick */}
+          <circle
+            className={clsx(styles.button, {
+              [styles.pressed]: buttonState.ls,
+            })}
+            cx="28"
+            cy="59"
+            r="19"
+            stroke="white"
+            strokeWidth="2"
+          />
 
-      <circle
-        // Up
-        className={clsx(styles.button, {
-          [styles.pressed]: buttonState.rs,
-        })}
-        cx="242"
-        cy="155"
-        r="24"
-        stroke="white"
-        strokeWidth="2"
-      />
+          {/* Right stick */}
+          <circle
+            className={clsx(styles.button, {
+              [styles.pressed]: buttonState.rs,
+            })}
+            cx="242"
+            cy="155"
+            r="24"
+            stroke="white"
+            strokeWidth="2"
+          />
+        </>
+      )}
 
-      {directionDisplay === "buttons" && (
+      {(layout === "buttons" || layout === "tsract") && (
         <>
           <circle
             // Up
@@ -213,7 +216,7 @@ export default function Snackbox({
         </>
       )}
 
-      {directionDisplay === "stick" && (
+      {layout === "stick" && (
         <>
           {/* Stick hole */}
           <circle cx="103" cy="91" r="10.4482" fill="#393939" />
