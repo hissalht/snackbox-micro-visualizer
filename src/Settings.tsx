@@ -79,7 +79,7 @@ export default function Settings({ settings, onChange }: SettingsProps) {
               onChange={handleChange("layout")}
               checked={settings.layout === "tsract"}
             />
-            <label htmlFor="direction-display-stick">TSR:ACT</label>
+            <label htmlFor="direction-display-tsract">TSR:ACT</label>
           </div>
         </div>
       </fieldset>
