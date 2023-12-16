@@ -18,12 +18,14 @@ const DEFAULT_BUTTON_STATE: ButtonState = {
   rb: false,
   lt: false,
   rt: false,
+  ls: false,
+  rs: false,
 };
 
 const DEFAULT_SETTINGS: ColorSettings = {
   buttonColor: "black",
   caseColor: "black",
-  directionDisplay: "buttons",
+  layout: "buttons",
 };
 
 function App() {
@@ -38,13 +40,13 @@ function App() {
 
     let directionDisplay = searchParams.get("directionDisplay");
     if (!directionDisplay || !["buttons", "stick"].includes(directionDisplay)) {
-      directionDisplay = DEFAULT_SETTINGS.directionDisplay;
+      directionDisplay = DEFAULT_SETTINGS.layout;
     }
 
     return {
       buttonColor,
       caseColor,
-      directionDisplay: directionDisplay as "buttons" | "stick",
+      layout: directionDisplay as "buttons" | "stick",
     };
   });
 
@@ -57,7 +59,7 @@ function App() {
     const searchParams = new URLSearchParams();
     searchParams.set("buttonColor", value.buttonColor);
     searchParams.set("caseColor", value.caseColor);
-    searchParams.set("directionDisplay", value.directionDisplay);
+    searchParams.set("directionDisplay", value.layout);
     // eslint-disable-next-line no-restricted-globals
     history.replaceState(null, "", `/?${searchParams.toString()}`);
   };
@@ -71,6 +73,7 @@ function App() {
       if (gamepadIndex !== null) {
         const gamepad = navigator.getGamepads()[gamepadIndex]!;
         const buttons = gamepad.buttons;
+        console.log(JSON.stringify(buttons.map((button) => button.pressed)));
         const newButtonState: ButtonState = {
           a: buttons[0].pressed,
           b: buttons[1].pressed,
@@ -80,6 +83,9 @@ function App() {
           rb: buttons[5].pressed,
           lt: buttons[6].pressed,
           rt: buttons[4].pressed,
+
+          ls: buttons[10].pressed,
+          rs: buttons[11].pressed,
 
           left: buttons[14].pressed,
           down: buttons[13].pressed,
@@ -116,7 +122,7 @@ function App() {
         buttonState={buttonState}
         buttonColor={settings.buttonColor}
         caseColor={settings.caseColor}
-        directionDisplay={settings.directionDisplay}
+        layout={settings.layout}
       />
     </>
   );
