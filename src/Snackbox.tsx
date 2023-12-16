@@ -15,6 +15,8 @@ export interface ButtonState {
   rb: boolean;
   lt: boolean;
   rt: boolean;
+  ls: boolean;
+  rs: boolean;
 }
 
 interface SnackboxProps {
@@ -130,6 +132,31 @@ export default function Snackbox({
         cx="338"
         cy="100"
         r="19"
+        stroke="white"
+        strokeWidth="2"
+      />
+
+      {/* LS */}
+      <circle
+        // Left
+        className={clsx(styles.button, {
+          [styles.pressed]: buttonState.ls,
+        })}
+        cx="28"
+        cy="59"
+        r="19"
+        stroke="white"
+        strokeWidth="2"
+      />
+
+      <circle
+        // Up
+        className={clsx(styles.button, {
+          [styles.pressed]: buttonState.rs,
+        })}
+        cx="242"
+        cy="155"
+        r="24"
         stroke="white"
         strokeWidth="2"
       />

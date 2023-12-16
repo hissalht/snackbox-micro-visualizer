@@ -18,6 +18,8 @@ const DEFAULT_BUTTON_STATE: ButtonState = {
   rb: false,
   lt: false,
   rt: false,
+  ls: false,
+  rs: false,
 };
 
 const DEFAULT_SETTINGS: ColorSettings = {
@@ -71,6 +73,7 @@ function App() {
       if (gamepadIndex !== null) {
         const gamepad = navigator.getGamepads()[gamepadIndex]!;
         const buttons = gamepad.buttons;
+        console.log(JSON.stringify(buttons.map((button) => button.pressed)));
         const newButtonState: ButtonState = {
           a: buttons[0].pressed,
           b: buttons[1].pressed,
@@ -80,6 +83,9 @@ function App() {
           rb: buttons[5].pressed,
           lt: buttons[6].pressed,
           rt: buttons[4].pressed,
+
+          ls: buttons[10].pressed,
+          rs: buttons[11].pressed,
 
           left: buttons[14].pressed,
           down: buttons[13].pressed,
