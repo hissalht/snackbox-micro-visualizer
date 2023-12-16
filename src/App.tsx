@@ -39,7 +39,10 @@ function App() {
       searchParams.get("caseColor") || DEFAULT_SETTINGS.caseColor;
 
     let directionDisplay = searchParams.get("directionDisplay");
-    if (!directionDisplay || !["buttons", "stick"].includes(directionDisplay)) {
+    if (
+      !directionDisplay ||
+      !["buttons", "stick", "tsract"].includes(directionDisplay)
+    ) {
       directionDisplay = DEFAULT_SETTINGS.layout;
     }
 
