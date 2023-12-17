@@ -44,42 +44,42 @@ export default function Settings({ settings, onChange }: SettingsProps) {
       </div>
 
       <fieldset>
-        <legend>Direction display</legend>
+        <legend>Layout</legend>
         <div className={styles.field}>
           <div>
             <input
-              id="direction-display-buttons"
+              id="layout-buttons"
               type="radio"
-              name="direction-display"
+              name="layout"
               value="buttons"
               onChange={handleChange("layout")}
               checked={settings.layout === "buttons"}
             />
-            <label htmlFor="direction-display-buttons">Buttons</label>
+            <label htmlFor="layout-buttons">Buttons</label>
           </div>
 
           <div>
             <input
-              id="direction-display-stick"
+              id="layout-stick"
               type="radio"
-              name="direction-display"
+              name="layout"
               value="stick"
               onChange={handleChange("layout")}
               checked={settings.layout === "stick"}
             />
-            <label htmlFor="direction-display-stick">Stick</label>
+            <label htmlFor="layout-stick">Stick</label>
           </div>
 
           <div>
             <input
-              id="direction-display-tsract"
+              id="layout-tsract"
               type="radio"
-              name="direction-display"
+              name="layout"
               value="tsract"
               onChange={handleChange("layout")}
               checked={settings.layout === "tsract"}
             />
-            <label htmlFor="direction-display-tsract">TSR:ACT</label>
+            <label htmlFor="layout-tsract">TSR:ACT</label>
           </div>
         </div>
       </fieldset>

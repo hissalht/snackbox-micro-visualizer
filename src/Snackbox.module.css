@@ -1,30 +1,5 @@
-/* 
-  --snackbox-button-color
-  --snackbox-button-color-pressed
-
-  --snackbox-case-color
-  --snackbox-border-color
-*/
-
 .case {
   fill: var(--snackbox-case-color, black);
-}
-
-.button {
-  stroke: rgba(255, 255, 255, 0.8);
-  transform-box: fill-box;
-  transform-origin: center;
-}
-
-.button.pressed {
-  fill: var(--snackbox-button-color-pressed, white);
-  transform: translateY(6%) scale(0.95);
-}
-
-.button:not(.pressed) {
-  transition: fill 150ms ease-out, transform 150ms ease-in-out;
-  transform: translateY(0) scale(1);
-  fill: var(--snackbox-button-color, transparent);
 }
 
 .stickBall {
