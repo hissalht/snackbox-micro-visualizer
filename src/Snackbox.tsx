@@ -54,7 +54,7 @@ export default function Snackbox({
         x={isTsract ? -19 : 1}
         y="1"
         width={isTsract ? 408 : 388}
-        height="208"
+        height={isTsract ? 208 : 194}
         rx="19"
         stroke="white"
         strokeWidth="2"
